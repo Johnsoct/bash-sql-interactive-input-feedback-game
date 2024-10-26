@@ -2,7 +2,7 @@
 
 NUMBER="$(( $RANDOM%1000 ))"
 NUMBER_OF_GUESSES=0
-PSQL="psql -U freecodecamp -d number_guess -t --no-align -c"
+PSQL="psql -U <user> -d number_guess -t --no-align -c"
 USER_ID=
 
 function ADD_USER () {
