@@ -18,13 +18,13 @@ SET row_security = off;
 
 DROP DATABASE number_guess;
 --
--- Name: number_guess; Type: DATABASE; Schema: -; Owner: freecodecamp
+-- Name: number_guess; Type: DATABASE; Schema: -; Owner: postgres
 --
 
 CREATE DATABASE number_guess WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'C.UTF-8' LC_CTYPE = 'C.UTF-8';
 
 
-ALTER DATABASE number_guess OWNER TO freecodecamp;
+ALTER DATABASE number_guess OWNER TO postgres;
 
 \connect number_guess
 
@@ -44,7 +44,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: games; Type: TABLE; Schema: public; Owner: freecodecamp
+-- Name: games; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.games (
@@ -54,10 +54,10 @@ CREATE TABLE public.games (
 );
 
 
-ALTER TABLE public.games OWNER TO freecodecamp;
+ALTER TABLE public.games OWNER TO postgres;
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: freecodecamp
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.users (
@@ -66,10 +66,10 @@ CREATE TABLE public.users (
 );
 
 
-ALTER TABLE public.users OWNER TO freecodecamp;
+ALTER TABLE public.users OWNER TO postgres;
 
 --
--- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: freecodecamp
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.users_id_seq
@@ -81,24 +81,24 @@ CREATE SEQUENCE public.users_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.users_id_seq OWNER TO freecodecamp;
+ALTER TABLE public.users_id_seq OWNER TO postgres;
 
 --
--- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: freecodecamp
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 
 --
--- Name: users id; Type: DEFAULT; Schema: public; Owner: freecodecamp
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
 
 
 --
--- Data for Name: games; Type: TABLE DATA; Schema: public; Owner: freecodecamp
+-- Data for Name: games; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 INSERT INTO public.games VALUES (654, 33, 1);
@@ -114,7 +114,7 @@ INSERT INTO public.games VALUES (466, 11, 5);
 
 
 --
--- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: freecodecamp
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 INSERT INTO public.users VALUES (5, 'Roger');
@@ -137,14 +137,14 @@ INSERT INTO public.users VALUES (22, '671214');
 
 
 --
--- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.users_id_seq', 22, true);
 
 
 --
--- Name: users users_id_key; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
+-- Name: users users_id_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.users
@@ -152,7 +152,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.users
@@ -160,7 +160,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- Name: games games_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: freecodecamp
+-- Name: games games_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.games
