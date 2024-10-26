@@ -86,11 +86,11 @@ function INIT_GAME () {
 
   if [[ -z $INPUT ]] || [[ ! "${INPUT}" =~ ^[0-9]+$ ]]
   then
-    echo "this is not an integer, guess again:"
-    INIT_GAME $USER_ID
+    echo "That is not an integer, guess again:"
+    INIT_GAME 1
+  else
+    CHECK_GUESS $INPUT
   fi
-
-  CHECK_GUESS $INPUT
 }
 
 function SAVE_GAME () {
