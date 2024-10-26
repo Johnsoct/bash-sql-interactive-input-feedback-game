@@ -97,5 +97,6 @@ function SAVE_GAME () {
   local QUERY=$($PSQL "INSERT INTO games(number, guesses, user_id) VALUES ($NUMBER, $NUMBER_OF_GUESSES, $USER_ID)")
 }
 
+
 INIT
 INIT_GAME
