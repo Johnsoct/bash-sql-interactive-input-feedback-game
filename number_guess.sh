@@ -7,7 +7,10 @@ USER_ID=
 
 function ADD_USER () {
   local USERNAME=$1
-  local QUERY=$($PSQL "INSERT INTO users(username) VALUES('$USERNAME')")
+  local INSERT=$($PSQL "INSERT INTO users(username) VALUES('$USERNAME')")
+  local ID=$($PSQL "SELECT id FROM users WHERE username='$USERNAME'")
+
+  USER_ID=$ID
 }
 
 function CHECK_GUESS () {
@@ -15,15 +18,15 @@ function CHECK_GUESS () {
 
   (( NUMBER_OF_GUESSES++ ))
 
-  if [[ $GUESS == $NUMBER ]]
+  if (( $GUESS == $NUMBER ))
   then
     echo "You guessed it in $NUMBER_OF_GUESSES tries. The secret number was $NUMBER. Nice job!"
     SAVE_GAME
-  elif [[ $GUESS < $NUMBER ]]
+  elif (( $GUESS < $NUMBER ))
   then
     echo "It's higher than that, guess again:"
     INIT_GAME 1
-  elif [[ $GUESS > $NUMBER ]]
+  elif (( $GUESS > $NUMBER ))
   then
     echo "It's lower than that, guess again:"
     INIT_GAME 1
@@ -60,7 +63,9 @@ function INIT () {
   echo "Enter your username:"
   read USERNAME
 
-  if [[ ! ${#USERNAME} > 22 ]]
+  echo ${#USERNAME}
+
+  if (( ${#USERNAME} > 22 ))
   then
     echo "Usernames cannot be longer than 22 characters."
     INIT
