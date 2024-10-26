@@ -99,5 +99,3 @@ function SAVE_GAME () {
 
 INIT
 INIT_GAME
-
-
